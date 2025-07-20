@@ -1,11 +1,10 @@
 {
   "name": "@bunt-creations/wallet-adapter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
-  "type": "module",
   "files": [
     "dist"
   ],
@@ -26,7 +25,7 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "pnpm type-check -- --watch",
-    "build": "rollup -c && tsc",
+    "build": "rollup -c && tsc --emitDeclarationOnly",
     "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
     "build:js": "rollup -c",
     "dev": "next dev",
@@ -43,6 +42,7 @@
     "@solana/web3.js": ">=1.77.3",
     "decimal.js": ">=10.4.3",
     "react": ">=18",
+    "react-dom": ">=18",
     "styled-components": "*",
     "@jup-ag/jup-mobile-adapter": "*"
   },

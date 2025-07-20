@@ -172,7 +172,7 @@ const ListOfWallets: React.FC<{
           <span tw="text-xs">By logging in I agree to the <a href="https://bunt.fun/tos" target="_blank" tw="text-[#f8d25d] font-medium">Terms</a> & <a href="https://bunt.fun/privacy" target="_blank" tw="text-[#f8d25d] font-medium">Privacy Policy</a></span>
           <span tw="text-sm font-semibold mt-2 flex flex-row gap-1 items-center">
             Powered by
-            <a href="https://unified.jup.ag" target="_blank"><Image src="/assets/images/jup.png" alt="jupiter" width={16} height={16} tw="object-contain" /></a>
+            <a href="https://unified.jup.ag" target="_blank"><Image src="https://i.imgur.com/AH886Bx.png" alt="jupiter" width={16} height={16} tw="object-contain" /></a>
             <a href="https://unified.jup.ag" target="_blank">Jupiter Wallet</a>
             </span>
         </div>
