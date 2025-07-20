@@ -355,7 +355,7 @@ const UnifiedWalletModal: React.FC<IUnifiedWalletModal> = ({ onClose }) => {
     <div
       ref={contentRef}
       css={[
-        tw`max-w-sm w-full relative flex flex-col overflow-hidden rounded-3xl h-fit transition-height duration-500 ease-in-out shadow-2xl shadow-amber-400/20 `,
+        tw`max-w-sm relative flex flex-col overflow-hidden rounded-3xl h-fit transition-height duration-500 ease-in-out shadow-2xl shadow-amber-400/20 `,
         styles.container[theme],
       ]}
     >
