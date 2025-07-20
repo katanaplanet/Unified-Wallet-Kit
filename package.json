@@ -1,14 +1,21 @@
 {
-  "name": "@jup-ag/wallet-adapter",
-  "version": "0.2.3",
+  "name": "@bunt-creations/wallet-adapter",
+  "version": "1.0.0",
   "license": "MIT",
-  "main": "dist/components.esm.js",
-  "module": "dist/components.esm.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "type": "module",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
   "babelMacros": {
     "twin": {
       "config": "tailwind.config.js",
@@ -19,11 +26,10 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "pnpm type-check -- --watch",
-    "build:types": "tsc --noEmit false --emitDeclarationOnly --outDir dist/types",
+    "build": "rollup -c && tsc",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
     "build:js": "rollup -c",
-    "build-lib": "pnpm build:types && pnpm build:js",
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "serve": "npx serve public"
   },

@@ -2,6 +2,7 @@ import { Adapter, WalletName, WalletReadyState } from '@solana/wallet-adapter-ba
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { useToggle } from 'react-use';
 import tw from 'twin.macro';
+import Image from "next/image";
 
 import { WalletIcon, WalletListItem } from './WalletListItem';
 
@@ -21,7 +22,7 @@ import { OnboardingFlow } from './Onboarding';
 const styles: IStandardStyle = {
   container: {
     light: [tw`text-black !bg-white shadow-xl`],
-    dark: [tw`text-white !bg-[#3A3B43] border border-white/10`],
+    dark: [tw`text-[#dfdfdd] !bg-[#0b101d]`],
     jupiter: [tw`text-white bg-[rgb(49, 62, 76)]`],
   },
   shades: {
@@ -36,12 +37,12 @@ const styles: IStandardStyle = {
   },
   subtitle: {
     light: [tw`text-black/50`],
-    dark: [tw`text-white/50`],
+    dark: [tw`text-[#dfdfdd]`],
     jupiter: [tw`text-white/50`],
   },
   header: {
     light: [tw`border-b`],
-    dark: [],
+    dark: [tw`text-[#dfdfdd]`],
     jupiter: [],
   },
   text: {
@@ -56,13 +57,13 @@ const Header: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const { t } = useTranslation();
 
   return (
-    <div css={[tw`px-5 py-6 flex justify-between leading-none`, styles.header[theme]]}>
+    <div css={[tw`px-5 pt-6 pb-2 flex justify-center text-center leading-none w-full`, styles.header[theme]]}>
       <div>
         <div tw="font-semibold">
-          <span>{t(`Connect Wallet`)}</span>
+          <span>{t(`log in with your wallet`)}</span>
         </div>
-        <div css={[tw`text-xs mt-1`, styles.subtitle[theme]]}>
-          <span>{t(`You need to connect a Solana wallet.`)}</span>
+        <div css={[tw`font-medium text-sm mt-3`, styles.subtitle[theme]]}>
+          <span>{t(`welcome to bunt.fun`)}</span>
         </div>
       </div>
 
@@ -98,7 +99,7 @@ const ListOfWallets: React.FC<{
   const renderWalletList = useMemo(
     () => (
       <div>
-        <div tw="mt-4 grid gap-2 grid-cols-2 pb-4" translate="no">
+        <div tw="mt-4 flex flex-col gap-2 pb-4" translate="no">
           {list.others.map((adapter, index) => {
             return (
               <ul key={index}>
@@ -149,14 +150,14 @@ const ListOfWallets: React.FC<{
 
   return (
     <>
-      <div className="hideScrollbar" css={[tw`h-full overflow-y-auto pt-3 pb-8 px-5 relative`, isOpen && tw`mb-7`]}>
-        <span tw="mt-6 text-xs font-semibold">
+      <div className="hideScrollbar" css={[tw`h-full overflow-y-auto pt-3 pb-6 px-5 relative`, isOpen && tw`mb-7`]}>
+        <span tw="mt-6 text-xs font-semibold text-[#dfdfdd]">
           {list.highlightedBy === 'PreviouslyConnected' ? t(`Recently used`) : null}
-          {list.highlightedBy === 'TopAndRecommended' ? t(`Recommended wallets`) : null}
+          {list.highlightedBy === 'TopAndRecommended' ? t(`Suggested wallets`) : null}
         </span>
 
         <div>
-          <div tw="mt-4 grid gap-2 grid-cols-2 pb-4" translate="no">
+          <div tw="mt-4 flex flex-col gap-3 pb-3" translate="no">
             {list.highlight.map((adapter, index) => {
               return (
                 <ul key={index}>
@@ -167,7 +168,16 @@ const ListOfWallets: React.FC<{
           </div>
         </div>
 
-        {list.others.length > 0 ? (
+        <div tw="w-full mt-4 flex flex-col items-center gap-1">
+          <span tw="text-xs">By logging in I agree to the <a href="https://bunt.fun/tos" target="_blank" tw="text-[#f8d25d] font-medium">Terms</a> & <a href="https://bunt.fun/privacy" target="_blank" tw="text-[#f8d25d] font-medium">Privacy Policy</a></span>
+          <span tw="text-sm font-semibold mt-2 flex flex-row gap-1 items-center">
+            Powered by
+            <a href="https://unified.jup.ag" target="_blank"><Image src="/assets/images/jup.png" alt="jupiter" width={16} height={16} tw="object-contain" /></a>
+            <a href="https://unified.jup.ag" target="_blank">Jupiter Wallet</a>
+            </span>
+        </div>
+
+        {/* {list.others.length > 0 ? (
           <>
             <button type="button" tw="mt-5 flex w-full items-center justify-between cursor-pointer" onClick={onToggle}>
               <span tw="text-xs font-semibold">
@@ -177,7 +187,7 @@ const ListOfWallets: React.FC<{
 
             {renderWalletList}
           </>
-        ) : null}
+        ) : null} */}
       </div>
 
       {/* Bottom Shades */}
@@ -345,12 +355,11 @@ const UnifiedWalletModal: React.FC<IUnifiedWalletModal> = ({ onClose }) => {
     <div
       ref={contentRef}
       css={[
-        tw`max-w-md w-full relative flex flex-col overflow-hidden rounded-xl max-h-[90vh] lg:max-h-[576px] transition-height duration-500 ease-in-out `,
+        tw`max-w-sm w-full relative flex flex-col overflow-hidden rounded-3xl h-fit transition-height duration-500 ease-in-out shadow-2xl shadow-amber-400/20 `,
         styles.container[theme],
       ]}
     >
       <Header onClose={onClose} />
-      <div tw="border-t-[1px] border-white/10" />
       <ListOfWallets list={list} onToggle={onToggle} isOpen={isOpen} />
 
       {walletModalAttachments?.footer ? <>{walletModalAttachments?.footer}</> : null}

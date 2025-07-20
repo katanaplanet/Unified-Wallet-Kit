@@ -13,35 +13,28 @@ export default {
   input: 'src/index.tsx',
   output: [
     {
-      // ES Modules: Modern browser imports
-
-      // Browser usage:
-      // <script type="module">
-      //   import { func } from 'my-lib';
-      //   func();
-      // </script>
-
-      // js/tsx file usage:
-      // import { func } from 'my-lib';
-      // func();
-      file: pkg.module,
+      file: 'dist/index.esm.js',
       format: 'es',
       sourcemap: true,
     },
+    {
+      file: 'dist/index.cjs.js',
+      format: 'cjs',
+      sourcemap: true,
+      exports: 'named',
+    }
   ],
   plugins: [
     nodeExternals({
-      // Specificially bundle react-use in
       exclude: /^react-use/,
     }),
-
     nodeResolve({ extensions: config.extensions }),
-
     commonjs(),
     babel({
       extensions: config.extensions,
       include: ['src/**/*'],
       exclude: 'node_modules/**',
+      babelHelpers: 'bundled',
     }),
   ],
 };

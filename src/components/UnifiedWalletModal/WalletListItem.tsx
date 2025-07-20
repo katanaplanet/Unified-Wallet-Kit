@@ -72,16 +72,16 @@ export const WalletListItem = ({ handleClick, wallet }: WalletListItemProps) => 
         type="button"
         onClick={handleClick}
         css={[
-          tw`flex items-center w-full px-5 py-4 space-x-5 transition-all border rounded-lg cursor-pointer border-white/10 hover:bg-white/10 hover:backdrop-blur-xl hover:shadow-2xl`,
+          tw`flex items-center w-full px-4 py-3 space-x-5 transition-all border rounded-2xl cursor-pointer border-[#5e5e5e] hover:bg-white/30 hover:backdrop-blur-xl hover:shadow-2xl`,
           styles.container[theme],
         ]}
       >
         {isMobile() ? (
           <WalletIcon wallet={wallet} width={24} height={24} />
         ) : (
-          <WalletIcon wallet={wallet} width={30} height={30} />
+          <WalletIcon wallet={wallet} width={24} height={24} />
         )}
-        <span tw="font-semibold text-xs overflow-hidden text-ellipsis">{adapterName}</span>
+        <span tw="font-medium text-sm overflow-hidden text-ellipsis">{adapterName}</span>
       </button>
     </li>
   );

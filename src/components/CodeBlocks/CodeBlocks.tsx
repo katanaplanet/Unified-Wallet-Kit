@@ -19,7 +19,7 @@ const CodeBlocks: React.FC<{ params: Omit<Parameters<typeof UnifiedWalletProvide
   unparsedWalletDeclarationString,
   unparsedWalletPropsString,
 }) => {
-  const USE_WALLET_SNIPPET = useMemo(() => `import { UnifiedWalletProvider } from '@jup-ag/wallet-adapter';
+  const USE_WALLET_SNIPPET = useMemo(() => `import { UnifiedWalletProvider } from '@bunt-creations/wallet-adapter';
   const App = () => {
     ${unparsedWalletDeclarationString || ''}
     return (
