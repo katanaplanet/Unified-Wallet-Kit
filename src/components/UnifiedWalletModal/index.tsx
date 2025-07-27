@@ -31,24 +31,71 @@ const styles: IStandardStyle = {
     jupiter: [tw`bg-gradient-to-t from-[rgb(49, 62, 76)] to-transparent pointer-events-none`],
   },
   walletItem: {
-    light: [tw`bg-gray-50 hover:shadow-lg hover:border-black/10`],
-    dark: [tw`hover:shadow-2xl hover:bg-white/10`],
-    jupiter: [tw`hover:shadow-2xl hover:bg-white/10`],
+    light: [tw`bg-black hover:shadow-lg hover:border-black/10`],
+    dark: [tw`hover:shadow-2xl hover:bg-[#252525]`],
+    jupiter: [tw`hover:shadow-2xl hover:bg-[#252525]`],
   },
   subtitle: {
-    light: [tw`text-black/50`],
-    dark: [tw`text-[#dfdfdd]`],
-    jupiter: [tw`text-white/50`],
+    light: [tw`text-[#dedede]`],
+    dark: [tw`text-[#dedede]`],
+    jupiter: [tw`text-[#dedede]`],
   },
   header: {
     light: [tw`border-b`],
-    dark: [tw`text-[#dfdfdd]`],
+    dark: [tw`text-[#dedede]`],
     jupiter: [],
   },
   text: {
-    light: [tw`text-black`],
-    dark: [tw`text-white`],
-    jupiter: [tw`text-white`],
+    light: [tw`text-[#dedede]`],
+    dark: [tw`text-[#dedede]`],
+    jupiter: [tw`text-[#dedede]`],
+  },
+  dashedBox: {
+    light: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    dark: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    jupiter: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
   },
 };
 
@@ -152,12 +199,12 @@ const ListOfWallets: React.FC<{
     <>
       <div className="hideScrollbar" css={[tw`h-full overflow-y-auto pt-3 pb-6 px-5 relative`, isOpen && tw`mb-7`]}>
         <span tw="mt-6 text-xs font-semibold text-[#dfdfdd]">
-          {list.highlightedBy === 'PreviouslyConnected' ? t(`Recently used`) : null}
-          {list.highlightedBy === 'TopAndRecommended' ? t(`Suggested wallets`) : null}
+          {list.highlightedBy === 'PreviouslyConnected' ? t(`recently used`) : null}
+          {list.highlightedBy === 'TopAndRecommended' ? t(`suggested wallets`) : null}
         </span>
 
         <div>
-          <div tw="mt-4 flex flex-col gap-3 pb-3" translate="no">
+          <div tw="mt-4 flex flex-col gap-3 pb-3 text-[#dedede]" translate="no">
             {list.highlight.map((adapter, index) => {
               return (
                 <ul key={index}>
@@ -168,13 +215,13 @@ const ListOfWallets: React.FC<{
           </div>
         </div>
 
-        <div tw="w-full mt-4 flex flex-col items-center gap-1">
-          <span tw="text-xs">By logging in I agree to the <a href="https://bunt.fun/tos" target="_blank" tw="text-[#f8d25d] font-medium">Terms</a> & <a href="https://bunt.fun/privacy" target="_blank" tw="text-[#f8d25d] font-medium">Privacy Policy</a></span>
+        <div tw="w-full mt-4 flex flex-col items-center gap-1 text-[#dedede]">
+          <span tw="text-xs">By logging in I agree to the <a href="https://bunt.fun/tos" target="_blank" tw="text-[#ff6c02] font-medium">Terms</a> & <a href="https://bunt.fun/privacy" target="_blank" tw="text-[#ff6c02] font-medium">Privacy Policy</a></span>
           <span tw="text-sm font-semibold mt-2 flex flex-row gap-1 items-center">
             Powered by
             <a href="https://unified.jup.ag" target="_blank"><Image src="https://i.imgur.com/AH886Bx.png" alt="jupiter" width={16} height={16} tw="object-contain" /></a>
             <a href="https://unified.jup.ag" target="_blank">Jupiter Wallet</a>
-            </span>
+          </span>
         </div>
 
         {/* {list.others.length > 0 ? (
@@ -355,8 +402,8 @@ const UnifiedWalletModal: React.FC<IUnifiedWalletModal> = ({ onClose }) => {
     <div
       ref={contentRef}
       css={[
-        tw`max-w-sm w-full relative flex flex-col overflow-hidden rounded-3xl h-fit transition-height duration-500 ease-in-out shadow-2xl shadow-amber-400/20 `,
-        styles.container[theme],
+        tw`max-w-sm w-full bg-black relative flex flex-col overflow-hidden h-fit transition-height duration-500 ease-in-out `,
+        styles.dashedBox[theme],
       ]}
     >
       <Header onClose={onClose} />

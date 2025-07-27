@@ -17,9 +17,51 @@ export interface WalletIconProps extends DetailedHTMLProps<ImgHTMLAttributes<HTM
 
 const styles: IStandardStyle = {
   container: {
-    light: [tw`bg-gray-50 hover:shadow-lg hover:border-black/10`],
-    dark: [tw`hover:shadow-2xl hover:bg-white/10`],
-    jupiter: [tw`hover:shadow-2xl hover:bg-white/10`],
+    light: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    dark: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    jupiter: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
   },
 };
 
@@ -72,7 +114,7 @@ export const WalletListItem = ({ handleClick, wallet }: WalletListItemProps) => 
         type="button"
         onClick={handleClick}
         css={[
-          tw`flex items-center w-full px-4 py-3 space-x-5 transition-all border rounded-2xl cursor-pointer border-[#5e5e5e] hover:bg-white/30 hover:backdrop-blur-xl hover:shadow-2xl`,
+          tw`flex items-center w-full px-4 py-3 space-x-5 transition-all cursor-pointer hover:bg-[#252525]`,
           styles.container[theme],
         ]}
       >

@@ -13,14 +13,98 @@ const styles: IStandardStyle = {
     jupiter: [tw`text-white/50`],
   },
   button: {
-    light: [tw`bg-[#31333B] text-white hover:bg-black`],
-    dark: [tw`bg-[#31333B] hover:bg-black/30`],
-    jupiter: [tw`bg-black hover:bg-black/50`],
+    light: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    dark: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    jupiter: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
   },
   walletButton: {
-    light: [tw`bg-[#F9FAFB] hover:bg-black/5`],
-    dark: [tw`bg-white/10 hover:bg-white/20 border border-white/10 shadow-lg`],
-    jupiter: [tw`bg-white/5 hover:bg-white/20 border border-white/10 shadow-lg`],
+    light: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    dark: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    jupiter: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
   },
   externalIcon: {
     light: [tw`text-black/30`],
@@ -45,7 +129,7 @@ export const OnboardingIntro: React.FC<{
       <div tw="mt-4 flex flex-col justify-center items-center text-center">
         <span tw="text-lg font-semibold">{t(`New here?`)}</span>
         <span tw="mt-3 text-sm " css={[styles.subtitle[theme]]}>
-          {t(`Welcome to DeFi! Create a crypto wallet to get started!`)}
+          {t(`welcome! create a crypto wallet to get started!`)}
         </span>
       </div>
 
@@ -53,12 +137,12 @@ export const OnboardingIntro: React.FC<{
         <button
           type="button"
           css={[
-            tw`text-white font-semibold text-base w-full rounded-lg border border-white/10 py-5 leading-none`,
+            tw`text-white font-semibold text-base w-full hover:bg-[#252525] py-5 leading-none text-[#dedede]`,
             styles.button[theme],
           ]}
           onClick={() => setFlow('Get Wallet')}
         >
-          {t(`Get Started`)}
+          {t(`get started`)}
         </button>
       </div>
       {showBack && (
@@ -67,7 +151,7 @@ export const OnboardingIntro: React.FC<{
           css={[tw`mt-3 text-xs text-white/50 font-semibold`, styles.subtitle[theme]]}
           onClick={() => onClose()}
         >
-          {'← ' + t(`Go back`)}
+          {'← ' + t(`go back`)}
         </button>
       )}
     </div>
@@ -82,8 +166,8 @@ export const OnboardingGetWallets: React.FC<{ flow: IOnboardingFlow; setFlow: (f
   const { t } = useTranslation();
 
   return (
-    <div tw="flex flex-col justify-center py-3 px-10">
-      <span tw="text-base font-semibold">{t(`Popular wallets to get started`)}</span>
+    <div tw="flex flex-col justify-center pt-3 pb-6 px-10">
+      <span tw="text-[#646464] font-semibold">{t(`popular wallets to get started`)}</span>
       <div tw="mt-4 w-full space-y-2">
         {HARDCODED_WALLET_STANDARDS.map((item, idx) => {
           return (
@@ -92,7 +176,7 @@ export const OnboardingGetWallets: React.FC<{ flow: IOnboardingFlow; setFlow: (f
               key={idx}
               target="_blank"
               css={[
-                tw`px-5 py-4 flex space-x-4 w-full rounded-lg text-sm font-semibold items-center`,
+                tw`px-5 py-4 flex space-x-4 w-full hover:bg-[#252525] text-[#dedede] text-sm font-semibold items-center`,
                 styles.walletButton[theme],
               ]}
             >
@@ -106,7 +190,7 @@ export const OnboardingGetWallets: React.FC<{ flow: IOnboardingFlow; setFlow: (f
           href={'https://station.jup.ag/partners?category=Wallets'}
           target="_blank"
           css={[
-            tw`px-5 py-4 flex space-x-4 w-full rounded-lg text-sm font-semibold items-center`,
+            tw`px-5 py-4 flex space-x-4 w-full text-[#dedede] hover:bg-[#252525] text-sm font-semibold items-center`,
             styles.walletButton[theme],
           ]}
         >
@@ -117,13 +201,13 @@ export const OnboardingGetWallets: React.FC<{ flow: IOnboardingFlow; setFlow: (f
         </a>
       </div>
 
-      <span css={[tw`mt-3 text-center text-xs`, styles.subtitle[theme]]}>{t(`Once installed, refresh this page`)}</span>
+      <span css={[tw`mt-3 text-center text-xs text-[#646464]`, styles.subtitle[theme]]}>{t(`once installed, refresh this page`)}</span>
       <button
         type="button"
-        css={[tw`mt-3 text-xs text-white/50 font-semibold`, styles.subtitle[theme]]}
+        css={[tw`mt-3 text-xs text-[#646464] font-semibold`, styles.subtitle[theme]]}
         onClick={() => setFlow('Onboarding')}
       >
-        {'← ' + t(`Go back`)}
+        {'← ' + t(`go back`)}
       </button>
     </div>
   );

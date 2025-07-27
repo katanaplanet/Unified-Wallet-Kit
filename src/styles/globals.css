@@ -20,3 +20,17 @@ dialog {
 .hideScrollbar::-moz-scrollbar {
   display: none;
 }
+
+.dashed {
+  --border-solid: #252525;
+  background-image:
+    repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+    repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+    repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+    repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px);
+  background-position: top left, top left, bottom left, top right;
+  background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
+}

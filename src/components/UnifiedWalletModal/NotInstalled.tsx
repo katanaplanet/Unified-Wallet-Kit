@@ -12,9 +12,51 @@ const styles: IStandardStyle = {
     jupiter: [tw`text-white/50`],
   },
   button: {
-    light: [tw`bg-[#31333B] text-white hover:bg-black`],
-    dark: [tw`bg-[#31333B] hover:bg-black/30`],
-    jupiter: [tw`bg-black hover:bg-black/50`],
+    light: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    dark: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
+    jupiter: [
+      tw`relative z-0`,
+      {
+        '--border-solid': '#252525',
+        backgroundImage: `
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to right, var(--border-solid) 0 5px, transparent 5px 10px),
+        repeating-linear-gradient(to bottom, var(--border-solid) 0 5px, transparent 5px 10px)
+      `,
+        backgroundPosition: 'top left, top left, bottom left, top right',
+        backgroundSize: '100% 2px, 2px 100%, 100% 2px, 2px 100%',
+        backgroundRepeat: 'no-repeat',
+      },
+    ],
   },
 };
 
@@ -67,23 +109,23 @@ const NotInstalled: React.FC<{ adapter: Adapter; onClose: () => void; onGoOnboar
           <button
             type="button"
             css={[
-              tw`text-white font-semibold text-base w-full rounded-lg border border-white/10 px-2 py-4 leading-none text-xs`,
+              tw`text-white font-semibold text-base w-full px-2 py-4 hover:bg-[#252525] leading-none text-xs`,
               styles.button[theme],
             ]}
             onClick={onGoOnboarding}
           >
-            {t(`I don't have a wallet`)}
+            {t(`i don't have a wallet`)}
           </button>
 
           <button
             type="button"
             css={[
-              tw`text-white font-semibold text-base w-full rounded-lg border border-white/10 px-2 py-4 leading-none text-xs`,
+              tw`text-white font-semibold text-base w-full px-2 py-4 hover:bg-[#252525] leading-none text-xs`,
               styles.button[theme],
             ]}
             onClick={onClose}
           >
-            {'← ' + t(`Go back`)}
+            {'← ' + t(`go back`)}
           </button>
         </div>
       </div>
